@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Pokédex</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="app-container">
+      <header class="header">
+        <div class="header-content">
+          <div class="logo">
+            <div class="pokeball-icon">
+              <div class="pokeball-top"></div>
+              <div class="pokeball-bottom"></div>
+              <div class="pokeball-center"></div>
+            </div>
+            <h1 class="logo-text">Pokédex</h1>
+          </div>
+
+          <div class="controls">
+            <div class="search-wrapper">
+              <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input
+                  type="text"
+                  id="searchInput"
+                  placeholder="Search Pokémon..."
+                  class="search-input"
+                />
+              </div>
+            </div>
+
+            <div class="filter-wrapper">
+              <div class="custom-dropdown" id="typeDropdown">
+                <div class="dropdown-trigger" id="dropdownTrigger">
+                  <span class="dropdown-value">All Types</span>
+                  <i class="fas fa-chevron-down dropdown-arrow"></i>
+                </div>
+                <div class="dropdown-menu" id="dropdownMenu">
+                  <div class="dropdown-item active" data-value="">All Types</div>
+                  <div class="dropdown-item" data-value="normal">Normal</div>
+                  <div class="dropdown-item" data-value="fire">Fire</div>
+                  <div class="dropdown-item" data-value="water">Water</div>
+                  <div class="dropdown-item" data-value="electric">Electric</div>
+                  <div class="dropdown-item" data-value="grass">Grass</div>
+                  <div class="dropdown-item" data-value="ice">Ice</div>
+                  <div class="dropdown-item" data-value="fighting">Fighting</div>
+                  <div class="dropdown-item" data-value="poison">Poison</div>
+                  <div class="dropdown-item" data-value="ground">Ground</div>
+                  <div class="dropdown-item" data-value="flying">Flying</div>
+                  <div class="dropdown-item" data-value="psychic">Psychic</div>
+                  <div class="dropdown-item" data-value="bug">Bug</div>
+                  <div class="dropdown-item" data-value="rock">Rock</div>
+                  <div class="dropdown-item" data-value="ghost">Ghost</div>
+                  <div class="dropdown-item" data-value="dragon">Dragon</div>
+                  <div class="dropdown-item" data-value="dark">Dark</div>
+                  <div class="dropdown-item" data-value="steel">Steel</div>
+                  <div class="dropdown-item" data-value="fairy">Fairy</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="main-content">
+        <div class="loading-container" id="loadingContainer">
+          <div class="spinner">
+            <div class="spinner-ring"></div>
+            <div class="spinner-ring"></div>
+            <div class="spinner-ring"></div>
+          </div>
+          <p class="loading-text">Loading Pokémon...</p>
+          <div class="progress-container">
+            <div class="progress-bar">
+              <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <p class="progress-text" id="progressText">0 / 386</p>
+          </div>
+        </div>
+
+        <div class="pokemon-grid" id="pokemonGrid">
+          <!-- Pokémon cards will be dynamically inserted here -->
+        </div>
+
+        <div class="load-more-container hidden" id="loadMoreContainer">
+          <button class="load-more-btn" id="loadMoreBtn">
+            <i class="fas fa-plus-circle"></i>
+            Load More Pokémon
+          </button>
+          <div class="load-more-info">
+            <span id="loadMoreInfo">Showing 24 of 386</span>
+          </div>
+        </div>
+
+        <div class="pagination-container hidden" id="paginationContainer">
+          <button class="pagination-btn" id="prevBtn" disabled>
+            <i class="fas fa-chevron-left"></i>
+            Previous
+          </button>
+          <div class="pagination-info">
+            <span id="pageInfo">Page 1 of 1</span>
+          </div>
+          <button class="pagination-btn" id="nextBtn" disabled>
+            Next
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </main>
+    </div>
+
+    <!-- Modal for detailed Pokémon view -->
+    <div class="modal-backdrop" id="modalBackdrop">
+      <div class="modal-container" id="modalContainer">
+        <div class="modal-header">
+          <button class="modal-close" id="modalClose">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="modal-body" id="modalBody">
+          <!-- Detailed Pokémon info will be inserted here -->
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
